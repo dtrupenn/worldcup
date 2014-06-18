@@ -124,7 +124,10 @@ def fetch(endpoint):
 
 def main():
     colorama.init()
-    endpoint = ''.join(sys.argv[1:])
+    if sys.argv[1].lower() == 'country':
+        endpoint = 'country?fifa_code=' + sys.argv[2]
+    else:
+        endpoint = ''.join(sys.argv[1:])
     for match in fetch(endpoint):
         print prettify(match)
 
